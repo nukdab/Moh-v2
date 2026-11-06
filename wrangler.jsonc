@@ -5,7 +5,7 @@
   "compatibility_date": "2026-10-05",
 
   "assets": {
-    "directory": "./public",
+    "directory": "./Public",
     "binding": "ASSETS",
     "html_handling": "drop-trailing-slash",
     "not_found_handling": "404-page",
