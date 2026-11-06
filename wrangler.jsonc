@@ -1,0 +1,30 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "management-of-house",
+  "main": "./src/worker.js",
+  "compatibility_date": "2026-10-05",
+
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*", "/log-in", "/user", "/user/*", "/manager", "/manager/*", "/info/*"]
+  },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "management-of-house-db",
+      "database_id": "58b30614-e4d0-4d98-b817-c6db8a1372a9"
+    }
+  ],
+
+  "ai": { "binding": "AI" },
+
+  "vars": {
+    "ADMIN_MOBILES": ""
+  },
+
+  "observability": { "enabled": true }
+}
