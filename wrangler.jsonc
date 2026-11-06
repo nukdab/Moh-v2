@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "management-of-house",
+  "name": "moh-v2",
   "main": "./src/worker.js",
   "compatibility_date": "2026-10-05",
 
@@ -15,8 +15,8 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "management-of-house-db",
-      "database_id": "58b30614-e4d0-4d98-b817-c6db8a1372a9"
+      "database_name": "moh-v2-db",
+      "database_id": "f2c6a31b-2b8b-4ddf-bf7b-665eff9a288f"
     }
   ],
 
