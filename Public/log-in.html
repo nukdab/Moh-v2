@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#3fd9c0">
+<meta name="referrer" content="same-origin">
+<meta name="robots" content="noindex,nofollow">
+<title>ورود و ثبت نام — سازمان مدیریت منزل</title>
+<link rel="icon" href="/img/logo.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
+<link rel="stylesheet" href="/css/app.css"><link rel="stylesheet" href="/css/home.css">
+<script src="/js/theme.js"></script>
+</head>
+<body>
+<header class="hd">
+  <a class="brand" href="/" aria-label="سازمان مدیریت منزل">
+    <img class="logo" src="/img/logo.svg" alt="لوگوی سازمان مدیریت منزل" width="64" height="64">
+    <span><b>سازمان مدیریت منزل</b><small>management of house organization</small></span>
+  </a>
+  <nav class="topnav" aria-label="منوی اصلی">
+    <a href="/log-in">پنل شکایت</a><a href="/info/rules">قوانین</a><a href="/info/about">درباره</a><a href="/info/contact">ارتباط</a>
+  </nav>
+  <div class="tools">
+    <button class="pill-btn" type="button" id="lang" data-noi18n aria-label="تغییر زبان">EN</button>
+    <button class="pill-btn" type="button" id="theme" aria-label="حالت تاریک و روشن">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14A8 8 0 1110 4a6 6 0 0010 10z"/></svg>
+    </button>
+  </div>
+</header>
+<main class="authpage">
+ <div class="acard fx-in">
+  <h1 class="at">ورود به پنل شکایت</h1><p class="sub at">برای ادامه وارد شوید یا ثبت نام کنید.</p>
+  <div class="atabs" role="tablist"><button type="button" data-t="login" class="on">ورود</button><button type="button" data-t="register">ثبت نام</button><button type="button" data-t="forgot">فراموشی رمز</button></div>
+
+  <form id="f-login" class="on" novalidate>
+   <label>شماره همراه<input class="in" name="mobile" type="tel" inputmode="numeric" maxlength="11" placeholder="09123456789" ></label>
+   <label>رمز عبور<input class="in" name="pw" type="password" autocomplete="current-password" placeholder="••••••••"></label>
+   <div class="err" aria-live="polite"></div>
+   <button class="btn" type="submit">ورود</button>
+   <button class="lnk" type="button" data-go="forgot">رمز عبور را فراموش کرده‌ام</button>
+  </form>
+
+  <form id="f-register" novalidate>
+   <div class="two"><label>نام<input class="in fa" name="fn" maxlength="30"></label><label>نام خانوادگی<input class="in fa" name="ln" maxlength="40"></label></div>
+   <div class="two"><label>کد ملی<input class="in" name="nid" inputmode="numeric" maxlength="10" placeholder="0012345678"></label><label>شماره همراه<input class="in" name="mobile" type="tel" inputmode="numeric" maxlength="11" placeholder="09123456789"></label></div>
+   <div><div style="font-weight:700;font-size:13px;margin-bottom:5px">تاریخ تولد</div><div class="three bd"></div></div>
+   <label>رمز عبور جدید<input class="in" name="pw" type="password" autocomplete="new-password" placeholder="حداقل ۸ نویسه، شامل حرف و عدد"></label>
+   <div class="err" aria-live="polite"></div>
+   <button class="btn" type="submit">ثبت نام</button>
+  </form>
+
+  <form id="f-forgot" novalidate>
+   <div class="two"><label>شماره همراه<input class="in" name="mobile" type="tel" inputmode="numeric" maxlength="11" placeholder="09123456789"></label><label>کد ملی<input class="in" name="nid" inputmode="numeric" maxlength="10" placeholder="0012345678"></label></div>
+   <div><div style="font-weight:700;font-size:13px;margin-bottom:5px">تاریخ تولد</div><div class="three bd"></div></div>
+   <label>رمز عبور جدید<input class="in" name="pw" type="password" autocomplete="new-password" placeholder="حداقل ۸ نویسه، شامل حرف و عدد"></label>
+   <div class="err" aria-live="polite"></div>
+   <button class="btn" type="submit">تغییر رمز عبور</button>
+  </form>
+  
+  <p class="fine">🔒 اطلاعات شما رمزنگاری و محرمانه نگهداری می‌شود.</p>
+  <p class="fine"><a href="/" style="color:inherit">بازگشت به صفحه‌ی اصلی</a></p>
+ </div>
+</main>
+<script src="/js/core.js"></script>
+<script src="/js/sec.js"></script>
+<script src="/js/fx.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/i18n.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#3fd9c0">
+<meta name="referrer" content="same-origin">
+<meta name="robots" content="noindex,nofollow">
+<title>پنل مدیریت سازمان مدیریت منزل</title>
+<link rel="icon" href="/img/logo.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;700;800&display=swap">
+
+<link rel="stylesheet" href="/css/app.css">
+<script src="/js/theme.js"></script>
+</head>
+<body>
+<header class="hd">
+  <a class="brand" href="/" aria-label="سازمان مدیریت منزل">
+    <img class="logo" src="/img/logo.svg" alt="لوگوی سازمان مدیریت منزل" width="64" height="64">
+    <span><b>سازمان مدیریت منزل</b><small>management of house organization</small></span>
+  </a>
+  <nav class="topnav" aria-label="منوی اصلی">
+    <a href="/manager">پنل شکایت</a><a href="/info/rules">قوانین</a><a href="/info/about">درباره</a><a href="/info/contact">ارتباط</a>
+  </nav>
+  <div class="tools">
+    <button class="pill-btn" type="button" id="lang" data-noi18n aria-label="تغییر زبان">EN</button>
+    <button class="pill-btn" type="button" id="theme" aria-label="حالت تاریک و روشن">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14A8 8 0 1110 4a6 6 0 0010 10z"/></svg>
+    </button>
+  </div>
+</header>
+<div class="shell">
+  <aside class="side" aria-label="منوی پنل مدیریت">
+    <div class="who"><div class="av" id="av" aria-hidden="true">م</div><div><b id="who-name">مدیر سامانه</b><small><span class="role">ادمین</span></small></div></div>
+    <a href="/manager" data-nav="dashboard"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>داشبورد مدیریت</a>
+    <a href="/manager/complaints" data-nav="complaints"><svg viewBox="0 0 24 24"><path d="M3 6h6l2 2h10v11H3z"/></svg>همه‌ی شکایات<span class="badge" id="nbadge" hidden>۰</span></a>
+    <a href="/manager/new" data-nav="new"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM12 11v6M9 14h6"/></svg>ثبت شکایت جدید</a>
+    <a href="/manager/notices" data-nav="notices"><svg viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 1112 0v5l2 2H4zM10 20a2 2 0 004 0"/></svg>ابلاغیه‌ها</a>
+    <a href="/manager/feedback" data-nav="feedback"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 7l9 7 9-7"/></svg>انتقادات و پیشنهادات<span class="badge" id="fbadge" hidden>۰</span></a>
+    <a href="/manager/log" data-nav="log"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM9 12h6M9 16h6"/></svg>گزارش تغییرات</a>
+    <hr>
+    <a href="/manager/logout" data-nav="logout"><svg viewBox="0 0 24 24"><path d="M10 4H4v16h6M15 8l5 4-5 4M20 12H9"/></svg>خروج</a>
+  </aside>
+  <main class="main">
+    <section data-view="dashboard" hidden>
+      <h1>داشبورد مدیریت</h1>
+      <p class="sub">امروز <span id="today"></span> — وضعیت کلی پرونده‌های سامانه</p>
+      <div class="grid4" id="stats"></div>
+      <h2>نیازمند اقدام</h2>
+      <div class="tblwrap"><table class="tbl"><thead><tr><th>کد رهگیری</th><th>شاکی</th><th>عنوان</th><th>نوع</th><th>وضعیت</th><th></th></tr></thead><tbody id="todo"></tbody></table></div>
+    </section>
+
+    <section data-view="complaints" hidden>
+      <h1>همه‌ی شکایات</h1>
+      <p class="sub">شکایت‌های ثبت‌شده توسط مشتریان.</p>
+      <div class="row" style="align-items:flex-start">
+        <div><h2>وضعیت</h2><div class="chips" id="fst"></div></div>
+        <div><h2>نوع پرونده</h2><div class="chips" id="ftype"></div></div>
+        <div><h2>ثبت‌کننده</h2><div class="chips" id="fby"></div></div>
+      </div>
+      <div class="search"><svg viewBox="0 0 24 24" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M16 16l5 5"/></svg><input class="in" id="q" type="search" placeholder="جستجو بر اساس کد، شاکی یا عنوان" aria-label="جستجو"></div>
+      <div class="tblwrap"><table class="tbl"><thead><tr><th>کد رهگیری</th><th>شاکی</th><th>عنوان</th><th>نوع</th><th>تاریخ</th><th>وضعیت</th><th>عملیات</th></tr></thead><tbody id="all"></tbody></table></div>
+    </section>
+
+    <section data-view="case" hidden>
+      <p style="margin:0 0 8px"><a href="/manager/complaints" class="btn alt sm">بازگشت به شکایات</a></p>
+      <h1 id="c-title"></h1>
+      <div class="meta" id="c-meta"></div>
+      <div class="split even">
+        <div class="stack">
+          <div class="box"><h2>اطلاعات طرفین</h2><dl class="kv" id="c-kv"></dl></div>
+          <div class="box"><h2>متن شکایت</h2><p id="c-desc" style="margin:0"></p></div>
+          <div class="box"><h2>مدارک شاکی</h2><div class="chips" id="c-docs"></div></div>
+          <div class="box"><h2>امضای شاکی</h2><div class="sigview" id="c-sig"></div></div>
+          <div class="box"><h2>سوابق پرونده</h2><ol class="tl" id="c-tl"></ol></div>
+        </div>
+        <div class="stack">
+          <form class="box field" id="stform" style="gap:12px">
+            <h2>وضعیت پرونده</h2>
+            <div class="field"><label for="s-st">وضعیت جدید</label>
+              <select class="in" id="s-st"><option value="جدید">جدید</option><option value="در حال بررسی">در حال بررسی</option><option value="ابلاغ شده">ابلاغ شده</option><option value="مختومه">مختومه</option></select></div>
+            <div class="field"><label for="s-note">توضیحات برای شاکی <small style="color:var(--muted);font-weight:400">(برای مختومه کردن الزامی است)</small></label><textarea class="in" id="s-note" maxlength="3000" style="min-height:110px"></textarea></div>
+            <div><button class="btn" type="submit">ثبت وضعیت و توضیح</button> <a class="btn alt" id="cert" href="#" hidden>دانلود گواهی مختومه</a></div>
+          </form>
+          <form class="box field" id="ntform" style="gap:12px">
+            <h2>ابلاغیه‌ی درون‌برنامه‌ای</h2>
+            <div class="field"><label for="n-t">عنوان ابلاغیه</label><input class="in" id="n-t" maxlength="150" placeholder="مثلاً دعوت به جلسه رسیدگی"></div>
+            <div class="field"><label for="n-b">متن ابلاغیه</label><textarea class="in" id="n-b" maxlength="3000" style="min-height:100px"></textarea></div>
+            <div><button class="btn" type="submit">ارسال ابلاغیه به شاکی</button></div>
+            <ul class="mini" id="c-notices"></ul>
+          </form>
+          <div class="box">
+            <h2>ضمینه و مدارک ادمین</h2>
+            <label class="drop" for="a-file" style="padding:16px">افزودن مدرک یا ضمینه به پرونده<input id="a-file" type="file" multiple hidden accept=".pdf,.png,.jpg,.jpeg,.webp,.txt,.doc,.docx"></label>
+            <ul class="files" id="a-files" style="margin-bottom:0"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section data-view="new" hidden>
+      <h1>ثبت شکایت جدید</h1>
+      <p class="sub">شما در این بخش به عنوان شاکی از طرف دیگری شکایت ثبت می‌کنید.</p>
+      <p class="sub">مرحله ۱ از ۳ — اطلاعات شکایت</p>
+      <ol class="steps"><li class="on"><i>۱</i><span>اطلاعات</span></li><li><i>۲</i><span>مدارک و امضا</span></li><li><i>۳</i><span>تایید</span></li></ol>
+      <div class="types" role="group" aria-label="نوع پرونده">
+        <button class="type" type="button" data-type="حقوقی" aria-pressed="true"><b>پرونده حقوقی</b><span>دادخواست</span></button>
+        <button class="type" type="button" data-type="کیفری" aria-pressed="false"><b>پرونده کیفری</b><span>شکواییه</span></button>
+      </div>
+      <form class="form2" id="f1" novalidate>
+        <div class="field"><label for="f-def">نام متهم / خوانده</label><input class="in" id="f-def" maxlength="120" required></div>
+        <div class="field"><label for="f-phone">شماره همراه متهم (اختیاری)</label><input class="in" id="f-phone" inputmode="tel" maxlength="20"></div>
+        <div class="field"><label for="f-sub">موضوع شکایت</label><input class="in" id="f-sub" maxlength="150" required></div>
+        <div class="field"><label for="f-date">تاریخ وقوع</label><input class="in" id="f-date" maxlength="20" placeholder="۱۴۰۵/۰۸/۱۰"></div>
+        <div class="field full"><label for="f-desc">توضیحات</label><textarea class="in" id="f-desc" maxlength="4000"></textarea></div>
+        <div class="row full"><button class="btn" type="submit">مرحله بعد</button><a class="btn alt" href="/manager" style="display:inline-grid;place-items:center">انصراف</a></div>
+      </form>
+    </section>
+
+    <section data-view="new-docs" hidden>
+      <h1>ثبت شکایت جدید</h1>
+      <p class="sub">مرحله ۲ از ۳ — مدارک و امضا</p>
+      <ol class="steps"><li class="on"><i>۱</i><span>اطلاعات</span></li><li class="on"><i>۲</i><span>مدارک و امضا</span></li><li><i>۳</i><span>تایید</span></li></ol>
+      <label class="drop" id="drop" for="file">مدارک خود را اینجا رها کنید یا انتخاب کنید (PDF، تصویر، متن یا Word؛ حداکثر ۱ مگابایت)<input id="file" type="file" multiple hidden accept=".pdf,.png,.jpg,.jpeg,.webp,.txt,.doc,.docx"></label>
+      <ul class="files" id="files"></ul>
+      <h2>امضای شاکی</h2>
+      <div class="sig"><canvas id="pad" aria-label="کادر امضا"></canvas><button class="btn alt sm" id="clr" type="button">پاک کردن</button><div class="hint" id="hint">با انگشت یا ماوس امضا کنید</div></div>
+      <label class="check"><input type="checkbox" id="rules"> قوانین را مطالعه کرده‌ام و می‌پذیرم</label>
+      <div class="row"><button class="btn" id="submit" type="button">ثبت نهایی شکایت</button><a class="btn alt" href="/manager/new" style="display:inline-grid;place-items:center">بازگشت</a></div>
+    </section>
+
+    <section data-view="notices" hidden>
+      <h1>ابلاغیه‌ها</h1>
+      <p class="sub">ابلاغیه‌هایی که برای مشتریان صادر شده است.</p>
+      <div class="split">
+        <ul class="notices" id="nlist"></ul>
+        <div class="paper" id="npaper"></div>
+      </div>
+    </section>
+
+    <section data-view="feedback" hidden>
+      <h1>انتقادات و پیشنهادات</h1>
+      <p class="sub">پیام‌هایی که از صفحه‌ی «ارتباط» ارسال شده است.</p>
+      <ul class="logl" id="fbl"></ul>
+    </section>
+
+    <section data-view="log" hidden>
+      <h1>گزارش تغییرات</h1>
+      <p class="sub">همه‌ی اقدام‌های ادمین ثبت می‌شود تا بعداً قابل پیگیری باشد.</p>
+      <ul class="logl" id="logl"></ul>
+    </section>
+  </main>
+</div>
+
+<script src="/js/core.js"></script>
+<script src="/js/sec.js"></script>
+<script src="/js/fx.js"></script>
+<script src="/js/manager.js"></script>
+<script src="/js/i18n.js"></script>
+</body>
+</html>

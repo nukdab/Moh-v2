@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#3fd9c0">
+<meta name="referrer" content="same-origin">
+
+<title>سازمان مدیریت منزل</title>
+<link rel="icon" href="/img/logo.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
+<link rel="stylesheet" href="/css/app.css"><link rel="stylesheet" href="/css/home.css">
+<script src="/js/theme.js"></script>
+</head>
+<body>
+<header class="hd">
+  <a class="brand" href="/" aria-label="سازمان مدیریت منزل">
+    <img class="logo" src="/img/logo.svg" alt="لوگوی سازمان مدیریت منزل" width="64" height="64">
+    <span><b>سازمان مدیریت منزل</b><small>management of house organization</small></span>
+  </a>
+  <nav class="topnav" aria-label="منوی اصلی">
+    <a href="/log-in">پنل شکایت</a><a href="/info/rules">قوانین</a><a href="/info/about">درباره</a><a href="/info/contact">ارتباط</a>
+  </nav>
+  <div class="tools">
+    <button class="pill-btn" type="button" id="lang" data-noi18n aria-label="تغییر زبان">EN</button>
+    <button class="pill-btn" type="button" id="theme" aria-label="حالت تاریک و روشن">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14A8 8 0 1110 4a6 6 0 0010 10z"/></svg>
+    </button>
+  </div>
+</header>
+<main class="infopage">
+ <div class="infocard fx-in">
+  <section data-view="rules" hidden>
+   <h1>قوانین</h1>
+   <p class="sub">لطفاً پیش از ثبت شکایت این قوانین را مطالعه کنید.</p>
+   <ol class="rules">
+    <li>اطلاعات هویتی و تماس خود را صحیح و کامل وارد کنید؛ ثبت اطلاعات خلاف واقع بر عهده‌ی ثبت‌کننده است.</li>
+    <li>هر شکایت باید دارای شرح روشن ماجرا باشد و در صورت وجود، مدارک و مستندات پیوست شود.</li>
+    <li>ثبت شکایت واهی، توهین، تهدید و افترا در سامانه ممنوع است و می‌تواند به رد پرونده بینجامد.</li>
+    <li>وضعیت پرونده، توضیحات کارشناس و ابلاغیه‌ها از طریق همین سامانه (بخش «شکایات من» و «ابلاغیه‌ها») اعلام می‌شود و پیگیری آن‌ها بر عهده‌ی شاکی است.</li>
+    <li>اطلاعات و مدارک شما محرمانه نگهداری می‌شود و فقط برای رسیدگی به همان پرونده در دسترس مدیر سازمان قرار می‌گیرد.</li>
+    <li>رمز عبور خود را در اختیار دیگران نگذارید. تعیین رمز جدید فقط با تایید شماره همراه، کد ملی و تاریخ تولد ثبت‌شده انجام می‌شود.</li>
+    <li>نتیجه‌ی بررسی بسته به مدارک و نظر کارشناس است و تضمینی برای نتیجه‌ی خاص وجود ندارد.</li>
+   </ol>
+  </section>
+  <section data-view="about" hidden>
+   <h1>درباره</h1>
+   <p class="sub">سازمان مدیریت منزل</p>
+   <p>به سامانه‌ی مدیریت منزل خوش آمدید. ما در راستای اجرای عدالت این سامانه را راه انداخته‌ایم تا بتوانید به صورت کاملاً آنلاین از دیگران شکایت کنید.</p>
+   <p>به دلیل خصوصی بودن این سازمان و تعداد بسیار کم مشتریان، کوچک‌ترین شکایت با پیشرفته‌ترین و بهترین روش پیگیری می‌شود.</p>
+   <p>این سامانه برای ما منافع مادی ندارد؛ منافع معنوی دارد، یعنی خوشحالی ما از کمک کردن به شما. سوال و انتقادات را می‌پذیریم و بررسی می‌کنیم؛ اگر قابل حل باشد، انتقاد شما را پذیرفته و سامانه را ویرایش خواهیم کرد.</p>
+   <blockquote class="hadith2"><b>عدالت در دستان شماست.</b><br>امام صادق علیه‌السلام: عدالت از عسل شیرین‌تر، از کره نرم‌تر و از مشک خوشبوتر است.<br><small>[کافی، ج ۲، ص ۱۴۷، ح ۱۵]</small></blockquote>
+  </section>
+  <section data-view="contact" hidden>
+   <h1>ارتباط</h1>
+   <p class="sub">سوال، انتقاد یا پیشنهاد خود را برای ما بنویسید.</p>
+   <p>پیام شما مستقیماً برای مدیر سازمان ثبت می‌شود. برای پیگیری پرونده‌ی خود می‌توانید از بخش «ابلاغیه‌ها» و «دستیار هوشمند» در پنل کاربری هم استفاده کنید.</p>
+   <form class="field" id="fbform" style="gap:14px;max-width:560px">
+    <div class="field"><label for="fb-n">نام</label><input class="in" id="fb-n" maxlength="60" required></div>
+    <div class="field"><label for="fb-c">شماره همراه یا ایمیل (اختیاری)</label><input class="in" id="fb-c" maxlength="80"></div>
+    <div class="field"><label for="fb-m">پیام</label><textarea class="in" id="fb-m" maxlength="1500" required style="min-height:130px"></textarea></div>
+    <div><button class="btn" type="submit">ارسال پیام</button></div>
+   </form>
+  </section>
+ </div>
+</main>
+<script src="/js/core.js"></script>
+<script src="/js/sec.js"></script>
+<script src="/js/fx.js"></script>
+<script src="/js/info.js"></script>
+<script src="/js/i18n.js"></script>
+</body>
+</html>
